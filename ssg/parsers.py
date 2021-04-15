@@ -1,4 +1,4 @@
-from typing import list
+from typing import List
 from pathlib import path
 import shutil
 
@@ -30,4 +30,3 @@ class ResourceParser(Parser):
 
     def parse(self, path: Path, source: Path, dest: Path):
         copy(path, source, dest)
-        
