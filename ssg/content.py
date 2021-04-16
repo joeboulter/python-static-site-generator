@@ -10,13 +10,13 @@ class Content(Mapping):
 
     @classmethod
     def load(cls, string):
-        _, fm, content = __regex.split(string, 2)
-        load(fm, Loader = FullLoader)
+        _, fm, content = cls.__regex.split(string, 2)
+        metadata = load(fm, Loader = FullLoader)
         return cls(metadata, content)
 
     def __init__(self, metadata, content):
         self.data = metadata
-        self.data = {'content': content}
+        self.data['content'] = content
 
     @property
     def body():
@@ -37,11 +37,11 @@ class Content(Mapping):
         return self.data.__iter__()
 
     def __len__(self):
-        return self.data.__len__()
+        return len(self.data)
 
     def __repr__(self):
         data = {}
         for key, value in self.data.items():
-            if not key == 'content':
+            if key != 'content':
                 data[key] = value
         return str(data)
